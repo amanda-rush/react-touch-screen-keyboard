@@ -14,6 +14,7 @@ class KeyboardedInput extends React.Component {
     type: PropTypes.any,
     min: PropTypes.any,
     max: PropTypes.any,
+    maxLength: PropTypes.any,
     step: PropTypes.any,
     pattern: PropTypes.any,
     readOnly: PropTypes.any,
@@ -65,7 +66,11 @@ class KeyboardedInput extends React.Component {
   }
 
   handleChange(event) {
-    this.props.onChange(event.target.value);
+    var value = event.target.value.toString();
+    if (this.props.maxLength != undefined) {
+      value = value.substring(0, this.props.maxLength);
+    }
+    this.props.onChange(value);
   }
 
   handleOnBlur(value) {
@@ -132,6 +137,7 @@ class KeyboardedInput extends React.Component {
           type={this.props.type}
           onFocus={this.handleFocus}
           onBlur={this.handleFocusLost}
+          maxLength={this.props.maxLength}
           min={this.props.min}
           max={this.props.max}
           step={this.props.step}

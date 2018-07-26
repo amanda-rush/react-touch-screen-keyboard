@@ -38,6 +38,7 @@ class Input extends React.Component {
         value={this.props.value}
         min={this.props.min}
         max={this.props.max}
+        maxLength={this.props.maxLength}
         step={this.props.step}
         name={this.props.name}
         inputClassName={this.props.inputClassName}

@@ -19,6 +19,7 @@ export default class MainComponent extends React.Component {
       value9: '',
       value10: '',
       value11: '',
+      value12: '',
       customMapping: [
         ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
         ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '@', '*sh'],
@@ -36,6 +37,7 @@ export default class MainComponent extends React.Component {
     this.handleValue8Change = this.handleValue8Change.bind(this);
     this.handleValue9Change = this.handleValue9Change.bind(this);
     this.handleValue10Change = this.handleValue10Change.bind(this);
+    this.handleValue12Change = this.handleValue12Change.bind(this);
     this.handleFocusButtonClicked = this.handleFocusButtonClicked.bind(this);
     this.handleOnFocus = this.handleOnFocus.bind(this);
 
@@ -89,6 +91,11 @@ export default class MainComponent extends React.Component {
   handleValue11Change = (val) => {
     this.setState(_ => ({ value11: val }));
   };
+
+  handleValue12Change(val) {
+    this.setState({ value12: val });
+  }
+
   handleFocusButtonClicked() {
     this.input7ref.focus();
   }
@@ -245,6 +252,17 @@ export default class MainComponent extends React.Component {
           }}
           onFocus={value => {
             this.handleOnFocus(value);
+          }}
+          enabled
+        />
+        <br />
+
+        <p>Max Length prop</p>
+        <KeyboardedInput
+          value={this.state.value12}
+          maxLength="5"
+          onChange={value => {
+            this.handleValue12Change(value);
           }}
           enabled
         />
